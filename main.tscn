@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8ypxt86rto06"]
+
+[ext_resource type="PackedScene" uid="uid://dwh01h4s72gsb" path="res://planet.tscn" id="1_algvr"]
+[ext_resource type="PackedScene" uid="uid://ccnmqkb7nk2uj" path="res://spaceship.tscn" id="2_fs8j4"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="Planet" parent="Planets" instance=ExtResource("1_algvr")]
+position = Vector2(909, 450)
+
+[node name="Planet2" parent="Planets" instance=ExtResource("1_algvr")]
+position = Vector2(896, 142)
+
+[node name="Ship" parent="." instance=ExtResource("2_fs8j4")]
+position = Vector2(230, 373)

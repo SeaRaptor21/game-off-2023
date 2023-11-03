@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccnmqkb7nk2uj"]
+
+[ext_resource type="Script" path="res://scripts/spaceship.gd" id="1_sbdfo"]
+[ext_resource type="Texture2D" uid="uid://dtglkel51d3xh" path="res://assets/circle.png" id="2_tv2ei"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3alpu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmei8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tv2ei")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ship" type="CharacterBody2D"]
+script = ExtResource("1_sbdfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3alpu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.115385, 0.115385)
+sprite_frames = SubResource("SpriteFrames_mmei8")
