@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8ypxt86rto06"]
 
-[ext_resource type="PackedScene" uid="uid://dwh01h4s72gsb" path="res://planet.tscn" id="1_algvr"]
 [ext_resource type="Texture2D" uid="uid://defv3cqfdptaf" path="res://assets/bg.jpg" id="1_th7bm"]
 [ext_resource type="PackedScene" uid="uid://ccnmqkb7nk2uj" path="res://spaceship.tscn" id="2_fs8j4"]
+[ext_resource type="PackedScene" uid="uid://7nk7idy7hre1" path="res://planet_resizeable.tscn" id="3_1p6ey"]
 
 [node name="Main" type="Node2D"]
 
@@ -19,11 +19,11 @@ region_rect = Rect2(2.08165e-12, 2.08165e-12, 1152, 648)
 
 [node name="Planets" type="Node2D" parent="."]
 
-[node name="Planet" parent="Planets" instance=ExtResource("1_algvr")]
-position = Vector2(858, 488)
+[node name="Planet" parent="Planets" instance=ExtResource("3_1p6ey")]
+position = Vector2(814, 475)
 
-[node name="Planet2" parent="Planets" instance=ExtResource("1_algvr")]
-position = Vector2(691, 128)
+[node name="Planet2" parent="Planets" instance=ExtResource("3_1p6ey")]
+position = Vector2(757, 143)
 
 [node name="Ship" parent="." instance=ExtResource("2_fs8j4")]
 position = Vector2(296, 421)
