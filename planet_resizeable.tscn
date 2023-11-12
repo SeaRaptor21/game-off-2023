@@ -11,6 +11,11 @@ radius = 9.0
 [node name="Planet" type="Node2D"]
 script = ExtResource("1_q4muq")
 
+[node name="SizeEditRing" type="Sprite2D" parent="."]
+texture = ExtResource("2_ri4jc")
+region_enabled = true
+region_rect = Rect2(10, 10, 1004, 1004)
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="Area2D"]
@@ -25,12 +30,6 @@ shape = SubResource("CircleShape2D_pa1ji")
 [node name="Texture" type="Sprite2D" parent="."]
 region_enabled = true
 region_rect = Rect2(119, 57, 322, 322)
-
-[node name="SizeEditRing" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_ri4jc")
-region_enabled = true
-region_rect = Rect2(5, 5, 490, 490)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

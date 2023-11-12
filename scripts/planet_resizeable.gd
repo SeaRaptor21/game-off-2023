@@ -23,7 +23,7 @@ func _ready():
 	$Texture.texture = load('res://assets/planets/%d.png' % possible_images.pick_random())
 	$Texture.scale.x = image_scale
 	$Texture.scale.y = image_scale
-	$SizeEditRing.scale = Vector2(radius/Game.scale/(490/2), radius/Game.scale/(490/2))
+	$SizeEditRing.scale = Vector2(radius/Game.scale/(1004/2-10), radius/Game.scale/(1004/2-10))
 	
 func _process(delta):
 	if dragging:
@@ -39,7 +39,7 @@ func scale_to(r):
 	var image_scale = radius/Game.scale/(322/2)
 	$Texture.scale.x = image_scale
 	$Texture.scale.y = image_scale
-	$SizeEditRing.scale = Vector2(radius/Game.scale/(490/2), radius/Game.scale/(490/2))
+	$SizeEditRing.scale = Vector2(radius/Game.scale/(1004/2-10), radius/Game.scale/(1004/2-10))
 	
 func scale_add(num):
 	scale_to(radius+num)
