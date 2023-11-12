@@ -14,6 +14,9 @@ const min_radius = 6.371e6
 const possible_images = [1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,37,38,40,41]
 
 func _ready():
+	$Area2D/Collision.shape = $Area2D/Collision.shape.duplicate()
+	$Area2D2/Collision.shape = $Area2D2/Collision.shape.duplicate()
+	
 	$Area2D/Collision.shape.radius = radius/Game.scale
 	$Area2D2/Collision.shape.radius = radius/Game.scale-20
 	var image_scale = radius/Game.scale/(322/2)
