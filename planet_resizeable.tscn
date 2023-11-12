@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://7nk7idy7hre1"]
+[gd_scene load_steps=5 format=3 uid="uid://7nk7idy7hre1"]
 
 [ext_resource type="Script" path="res://scripts/planet_resizeable.gd" id="1_q4muq"]
-[ext_resource type="Texture2D" uid="uid://bbrv550xis10w" path="res://assets/circle.png" id="2_xngu1"]
+[ext_resource type="Texture2D" uid="uid://db4vfcndtglms" path="res://assets/size_edit_ring.png" id="2_ri4jc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igtut"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nu0gb"]
-radius = 7.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pa1ji"]
 radius = 9.0
@@ -20,26 +17,20 @@ script = ExtResource("1_q4muq")
 shape = SubResource("CircleShape2D_igtut")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Texture" type="Sprite2D" parent="."]
-region_enabled = true
-region_rect = Rect2(119, 57, 322, 322)
-
-[node name="SizeHandle" type="Node2D" parent="."]
-visible = false
-
-[node name="Sprite" type="Sprite2D" parent="SizeHandle"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_xngu1")
-
-[node name="Area2D" type="Area2D" parent="SizeHandle"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SizeHandle/Area2D"]
-shape = SubResource("CircleShape2D_nu0gb")
-
 [node name="Area2D2" type="Area2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource("CircleShape2D_pa1ji")
+
+[node name="Texture" type="Sprite2D" parent="."]
+region_enabled = true
+region_rect = Rect2(119, 57, 322, 322)
+
+[node name="SizeEditRing" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ri4jc")
+region_enabled = true
+region_rect = Rect2(5, 5, 490, 490)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

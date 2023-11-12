@@ -20,12 +20,13 @@ func _ready():
 	$Texture.texture = load('res://assets/planets/%d.png' % possible_images.pick_random())
 	$Texture.scale.x = image_scale
 	$Texture.scale.y = image_scale
-	$SizeHandle.position.x = radius/Game.scale
+	$SizeEditRing.scale = Vector2(radius/Game.scale/(490/2), radius/Game.scale/(490/2))
 	
 func _process(delta):
 	if dragging:
 		scale_to(max(min((get_global_mouse_position()-position).length()*Game.scale, max_radius), min_radius))
 		Input.set_default_cursor_shape(Input.CURSOR_HSIZE)
+		$SizeEditRing.visible = true
 
 func scale_to(r):
 	radius = r
@@ -35,7 +36,7 @@ func scale_to(r):
 	var image_scale = radius/Game.scale/(322/2)
 	$Texture.scale.x = image_scale
 	$Texture.scale.y = image_scale
-	$SizeHandle.position.x = radius/Game.scale
+	$SizeEditRing.scale = Vector2(radius/Game.scale/(490/2), radius/Game.scale/(490/2))
 	
 func scale_add(num):
 	scale_to(radius+num)
@@ -49,11 +50,13 @@ func _on_area_2d_mouse_entered():
 	mouse_in_area2d = true
 	if not mouse_in_area2d2:
 		Input.set_default_cursor_shape(Input.CURSOR_HSIZE)
+	$SizeEditRing.visible = true
 
 
 func _on_area_2d_mouse_exited():
 	mouse_in_area2d = false
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	$SizeEditRing.visible = false
 
 
 func _on_area_2d_2_mouse_entered():
@@ -72,3 +75,4 @@ func _unhandled_input(event):
 		dragging = false
 		if not mouse_in_area2d:
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+			$SizeEditRing.visible = false
