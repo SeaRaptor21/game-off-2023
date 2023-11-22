@@ -8,13 +8,21 @@ const ANIMATE_CREDITS = 3
 const main_radius = 166
 const low_radius = 120
 const high_radius = 200
+
+var rng = RandomNumberGenerator.new()
 var animate = ANIMATE_NONE
 var radius_inc = 0
 var current_radius = main_radius
 
+var bg_texture 
+
 func _ready():
 	$"Start Button/CollisionShape2D".shape.radius = main_radius
 	$"Quit Button/CollisionShape2D".shape.radius = main_radius
+	generate_stars()
+	
+func _draw():
+	draw_texture(bg_texture, Vector2())
 	
 func _process(delta):
 	if animate != ANIMATE_NONE:
@@ -31,6 +39,23 @@ func _process(delta):
 		elif radius_inc < 0:
 			if current_radius <= low_radius:
 				radius_inc *= -1
+				
+func generate_stars(num_stars = 500):
+	var star_pts = []
+	var bgImage = Image.create(1150, 650, false, Image.FORMAT_RGB8)
+	for n in num_stars:
+		var xc = rng.randi_range(2, 1147)
+		var yc = rng.randi_range(2,  647)
+		star_pts.append(Vector2i(xc,yc))
+		var cross = (rng.randi() % 6) == 0
+		if cross:
+			for ofs in range(-2,3):
+				bgImage.set_pixel(xc+ofs, yc, Color.WHITE)
+				bgImage.set_pixel(xc, yc+ofs, Color.WHITE)
+		else:
+			bgImage.set_pixel(xc, yc, Color.WHITE)
+	bg_texture = ImageTexture.create_from_image(bgImage)
+		
 
 func resize_start_button():
 	$"Start Button/CollisionShape2D".shape.radius = current_radius
