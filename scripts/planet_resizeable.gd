@@ -26,7 +26,7 @@ func _ready():
 	$SizeEditRing.scale = Vector2(radius/Game.scale/(1004/2-10), radius/Game.scale/(1004/2-10))
 	
 func _process(delta):
-	if dragging:
+	if dragging and not Game.launched:
 		scale_to(max(min((get_global_mouse_position()-position).length()*Game.scale, max_radius), min_radius))
 		Input.set_default_cursor_shape(Input.CURSOR_HSIZE)
 		$SizeEditRing.visible = true
@@ -50,10 +50,11 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_area_2d_mouse_entered():
-	mouse_in_area2d = true
-	if not mouse_in_area2d2:
-		Input.set_default_cursor_shape(Input.CURSOR_HSIZE)
-	$SizeEditRing.visible = true
+	if not Game.launched:
+		mouse_in_area2d = true
+		if not mouse_in_area2d2:
+			Input.set_default_cursor_shape(Input.CURSOR_HSIZE)
+		$SizeEditRing.visible = true
 
 
 func _on_area_2d_mouse_exited():
@@ -63,19 +64,22 @@ func _on_area_2d_mouse_exited():
 
 
 func _on_area_2d_2_mouse_entered():
-	mouse_in_area2d2 = true
-	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	if not Game.launched:
+		mouse_in_area2d2 = true
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 
 func _on_area_2d_2_mouse_exited():
-	mouse_in_area2d2 = false
-	Input.set_default_cursor_shape(Input.CURSOR_HSIZE)
+	if not Game.launched:
+		mouse_in_area2d2 = false
+		Input.set_default_cursor_shape(Input.CURSOR_HSIZE)
 
 func _unhandled_input(event):
-	if event.is_action_pressed('click') and mouse_in_area2d and not mouse_in_area2d2:
-		dragging = true
-	elif event.is_action_released('click'):
-		dragging = false
-		if not mouse_in_area2d:
-			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-			$SizeEditRing.visible = false
+	if not Game.launched:
+		if event.is_action_pressed('click') and mouse_in_area2d and not mouse_in_area2d2:
+			dragging = true
+		elif event.is_action_released('click'):
+			dragging = false
+			if not mouse_in_area2d:
+				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+				$SizeEditRing.visible = false

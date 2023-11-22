@@ -1,10 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8ypxt86rto06"]
+[gd_scene load_steps=12 format=3 uid="uid://c8ypxt86rto06"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_kvxnh"]
 [ext_resource type="Texture2D" uid="uid://bryxby4iiffby" path="res://assets/bg.jpg" id="1_th7bm"]
 [ext_resource type="PackedScene" uid="uid://ccnmqkb7nk2uj" path="res://spaceship.tscn" id="2_fs8j4"]
 [ext_resource type="PackedScene" uid="uid://7nk7idy7hre1" path="res://planet_resizeable.tscn" id="3_1p6ey"]
+[ext_resource type="Texture2D" uid="uid://bralsrxhwlduy" path="res://assets/ui/button2-launch-start.png" id="4_1kn15"]
+[ext_resource type="Texture2D" uid="uid://bt533yigx1vwh" path="res://assets/ui/button2-launch-start2.png" id="5_dl887"]
+[ext_resource type="Texture2D" uid="uid://bot72amy0y47l" path="res://assets/ui/button2-navigation menu.png" id="7_3isye"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_yjyfr"]
+
+[sub_resource type="Gradient" id="Gradient_awsom"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0.572549, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2u23m"]
+gradient = SubResource("Gradient_awsom")
+
+[sub_resource type="SystemFont" id="SystemFont_1bx28"]
+font_names = PackedStringArray("Futura")
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_kvxnh")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -27,3 +43,65 @@ position = Vector2(757, 143)
 
 [node name="Ship" parent="." instance=ExtResource("2_fs8j4")]
 position = Vector2(296, 421)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Control"]
+position = Vector2(572.095, 530.827)
+rotation = 1.5708
+scale = Vector2(21.3459, 1233.68)
+mesh = SubResource("QuadMesh_yjyfr")
+texture = SubResource("GradientTexture1D_2u23m")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 2
+offset_top = 537.0
+offset_right = 1152.0
+offset_bottom = 853.0
+color = Color(0, 0, 0, 1)
+
+[node name="Launch" type="TextureButton" parent="Control"]
+layout_mode = 2
+offset_top = 535.0
+offset_right = 113.0
+offset_bottom = 648.0
+texture_normal = ExtResource("4_1kn15")
+texture_pressed = ExtResource("5_dl887")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 2
+offset_left = 90.0
+offset_top = 572.0
+offset_right = 171.0
+offset_bottom = 608.0
+theme_override_fonts/font = SubResource("SystemFont_1bx28")
+theme_override_font_sizes/font_size = 25
+text = "Launch"
+
+[node name="Levels" type="TextureButton" parent="Control"]
+layout_mode = 2
+offset_left = 904.0
+offset_top = 535.0
+offset_right = 1017.0
+offset_bottom = 648.0
+texture_normal = ExtResource("7_3isye")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 2
+offset_left = 994.0
+offset_top = 572.0
+offset_right = 1126.0
+offset_bottom = 608.0
+theme_override_fonts/font = SubResource("SystemFont_1bx28")
+theme_override_font_sizes/font_size = 25
+text = "Level Select"
+
+[connection signal="pressed" from="Control/Launch" to="." method="_on_launch_pressed"]

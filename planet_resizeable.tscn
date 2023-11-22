@@ -12,6 +12,7 @@ radius = 9.0
 script = ExtResource("1_q4muq")
 
 [node name="SizeEditRing" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_ri4jc")
 region_enabled = true
 region_rect = Rect2(10, 10, 1004, 1004)
