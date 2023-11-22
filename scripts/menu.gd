@@ -125,4 +125,4 @@ func _on_credits_button_mouse_exited():
 
 func _on_credits_button_input_event(viewport, event, shape_idx):
 	if (event is InputEventMouseButton) && event.pressed:
-		print("credits clicked")
+		get_tree().change_scene_to_file("res://credits.tscn")
