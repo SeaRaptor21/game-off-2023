@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c8ypxt86rto06"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_kvxnh"]
-[ext_resource type="Texture2D" uid="uid://bryxby4iiffby" path="res://assets/bg.jpg" id="1_th7bm"]
+[ext_resource type="Texture2D" uid="uid://dslhl4sxxfpta" path="res://assets/bg.jpg" id="1_th7bm"]
 [ext_resource type="PackedScene" uid="uid://ccnmqkb7nk2uj" path="res://spaceship.tscn" id="2_fs8j4"]
 [ext_resource type="PackedScene" uid="uid://7nk7idy7hre1" path="res://planet_resizeable.tscn" id="3_1p6ey"]
 [ext_resource type="Texture2D" uid="uid://bralsrxhwlduy" path="res://assets/ui/button2-launch-start.png" id="4_1kn15"]
