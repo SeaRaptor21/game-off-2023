@@ -1,23 +1,74 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8ypxt86rto06"]
+[gd_scene load_steps=18 format=3 uid="uid://c8ypxt86rto06"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_kvxnh"]
-[ext_resource type="Texture2D" uid="uid://dslhl4sxxfpta" path="res://assets/bg.jpg" id="1_th7bm"]
+[ext_resource type="Texture2D" uid="uid://bryxby4iiffby" path="res://assets/bg.jpg" id="1_th7bm"]
 [ext_resource type="PackedScene" uid="uid://ccnmqkb7nk2uj" path="res://spaceship.tscn" id="2_fs8j4"]
 [ext_resource type="PackedScene" uid="uid://7nk7idy7hre1" path="res://planet_resizeable.tscn" id="3_1p6ey"]
-[ext_resource type="Texture2D" uid="uid://bralsrxhwlduy" path="res://assets/ui/button2-launch-start.png" id="4_1kn15"]
-[ext_resource type="Texture2D" uid="uid://bt533yigx1vwh" path="res://assets/ui/button2-launch-start2.png" id="5_dl887"]
-[ext_resource type="Texture2D" uid="uid://bot72amy0y47l" path="res://assets/ui/button2-navigation menu.png" id="7_3isye"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_yjyfr"]
-
-[sub_resource type="Gradient" id="Gradient_awsom"]
-colors = PackedColorArray(0, 0, 0, 0, 0, 0.572549, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2u23m"]
-gradient = SubResource("Gradient_awsom")
+[ext_resource type="Texture2D" uid="uid://w1bcwrwgdwkb" path="res://assets/ui/pack 2/PNG/Clouds/Cloud_02.png" id="5_eechq"]
+[ext_resource type="Texture2D" uid="uid://dlbugwuvonpvh" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Hangar_BTN.png" id="5_hty2m"]
+[ext_resource type="Texture2D" uid="uid://bsjmrgyhx8gfj" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Hangar_BTN.png" id="6_2v8kv"]
+[ext_resource type="Texture2D" uid="uid://bmopisv71thbn" path="res://assets/ui/pack 2/PNG/Main_UI/Boss_Name_Table.png" id="6_kvffh"]
+[ext_resource type="Texture2D" uid="uid://c6weml150rxhw" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Menu_BTN.png" id="7_rgraj"]
+[ext_resource type="Texture2D" uid="uid://dovvmhml4td70" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Menu_BTN.png" id="8_dw4li"]
+[ext_resource type="Texture2D" uid="uid://do71qrnctdgnq" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Settings_BTN.png" id="10_pwcb5"]
+[ext_resource type="Texture2D" uid="uid://dmau6k5r7ys60" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Settings_BTN.png" id="11_1yv5q"]
 
 [sub_resource type="SystemFont" id="SystemFont_1bx28"]
 font_names = PackedStringArray("Futura")
+
+[sub_resource type="Animation" id="Animation_er5v2"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ob4cj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_espau"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4yxrl"]
+_data = {
+"RESET": SubResource("Animation_ob4cj"),
+"fade_to_black": SubResource("Animation_espau"),
+"fade_to_normal": SubResource("Animation_er5v2")
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kvxnh")
@@ -50,58 +101,89 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Control"]
-position = Vector2(572.095, 530.827)
-rotation = 1.5708
-scale = Vector2(21.3459, 1233.68)
-mesh = SubResource("QuadMesh_yjyfr")
-texture = SubResource("GradientTexture1D_2u23m")
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 2
-offset_top = 537.0
-offset_right = 1152.0
-offset_bottom = 853.0
-color = Color(0, 0, 0, 1)
+[node name="Cloud02" type="Sprite2D" parent="Control"]
+position = Vector2(58, 586)
+texture = ExtResource("5_eechq")
+region_enabled = true
+region_rect = Rect2(266.5, -14, 497, 161)
 
 [node name="Launch" type="TextureButton" parent="Control"]
 layout_mode = 2
-offset_top = 535.0
-offset_right = 113.0
-offset_bottom = 648.0
-texture_normal = ExtResource("4_1kn15")
-texture_pressed = ExtResource("5_dl887")
+offset_left = 44.0
+offset_top = 563.0
+offset_right = 105.0
+offset_bottom = 624.0
+tooltip_text = "Launch"
+texture_normal = ExtResource("5_hty2m")
+texture_hover = ExtResource("6_2v8kv")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 2
-offset_left = 90.0
-offset_top = 572.0
-offset_right = 171.0
-offset_bottom = 608.0
+offset_left = 114.0
+offset_top = 575.0
+offset_right = 219.0
+offset_bottom = 611.0
 theme_override_fonts/font = SubResource("SystemFont_1bx28")
 theme_override_font_sizes/font_size = 25
-text = "Launch"
+text = "LAUNCH"
 
-[node name="Levels" type="TextureButton" parent="Control"]
-layout_mode = 2
-offset_left = 904.0
-offset_top = 535.0
-offset_right = 1017.0
-offset_bottom = 648.0
-texture_normal = ExtResource("7_3isye")
+[node name="Settings" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 20.0
+offset_right = 1006.0
+offset_bottom = 124.0
+tooltip_text = "Settings"
+texture_normal = ExtResource("10_pwcb5")
+texture_hover = ExtResource("11_1yv5q")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 4
 
-[node name="Label2" type="Label" parent="Control"]
-layout_mode = 2
-offset_left = 994.0
-offset_top = 572.0
+[node name="LevelSelect" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 1022.0
+offset_top = 20.0
 offset_right = 1126.0
-offset_bottom = 608.0
+offset_bottom = 124.0
+tooltip_text = "Level select"
+texture_normal = ExtResource("7_rgraj")
+texture_hover = ExtResource("8_dw4li")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="LevelNameTable" type="Sprite2D" parent="Control"]
+position = Vector2(310, 32)
+scale = Vector2(1.94, 1.94)
+texture = ExtResource("6_kvffh")
+
+[node name="LevelName" type="Label" parent="Control"]
+layout_mode = 2
+offset_left = 58.0
+offset_top = 8.0
+offset_right = 327.0
+offset_bottom = 76.0
 theme_override_fonts/font = SubResource("SystemFont_1bx28")
-theme_override_font_sizes/font_size = 25
-text = "Level Select"
+theme_override_font_sizes/font_size = 35
+text = "Level Name"
+
+[node name="TransitionScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="TransitionScreen"]
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScreen"]
+root_node = NodePath("../ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_4yxrl")
+}
 
 [connection signal="pressed" from="Control/Launch" to="." method="_on_launch_pressed"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

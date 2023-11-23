@@ -1,45 +1,74 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2mklph63pbp6"]
+[gd_scene load_steps=12 format=3 uid="uid://dnqhkg3xnom4x"]
 
-[ext_resource type="Texture2D" uid="uid://dnebx000yx2c1" path="res://assets/planets/6.png" id="1_lakt0"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_olu4w"]
-[ext_resource type="Texture2D" uid="uid://cxypdndckbx2f" path="res://assets/planets/5.png" id="3_1st0h"]
-[ext_resource type="Texture2D" uid="uid://c42lmkjch1ytw" path="res://assets/planets/1.png" id="4_774pd"]
-[ext_resource type="FontFile" uid="uid://djhj8whancoyr" path="res://assets/futura.ttf" id="4_n1vqi"]
-[ext_resource type="Texture2D" uid="uid://fwr7iiurcw15" path="res://assets/planets/25.png" id="5_21een"]
-[ext_resource type="Texture2D" uid="uid://cake72mln8hgb" path="res://assets/title_image.png" id="7_dyneq"]
-
-[sub_resource type="SystemFont" id="SystemFont_j1ve4"]
-font_names = PackedStringArray("Fantasy")
+[ext_resource type="Texture2D" uid="uid://b7l5h0ohrohud" path="res://assets/planets/5.png" id="3_1st0h"]
+[ext_resource type="Texture2D" uid="uid://cfllo21tbq8lq" path="res://assets/planets/1.png" id="4_774pd"]
+[ext_resource type="FontFile" uid="uid://b1asyyae1ldmm" path="res://assets/futura.ttf" id="4_n1vqi"]
+[ext_resource type="Texture2D" uid="uid://b8d6qifjjb66l" path="res://assets/planets/25.png" id="5_21een"]
+[ext_resource type="Texture2D" uid="uid://dsjvvgjsfn3ox" path="res://assets/title_image.png" id="7_dyneq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0abhs"]
 radius = 60.0333
 
+[sub_resource type="Animation" id="Animation_er5v2"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ob4cj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_espau"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4yxrl"]
+_data = {
+"RESET": SubResource("Animation_ob4cj"),
+"fade_to_black": SubResource("Animation_espau"),
+"fade_to_normal": SubResource("Animation_er5v2")
+}
+
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_olu4w")
 
-[node name="TextureButton" type="TextureButton" parent="."]
-visible = false
-offset_left = 909.0
-offset_top = 345.0
-offset_right = 1459.0
-offset_bottom = 896.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("1_lakt0")
-
-[node name="Label" type="Label" parent="TextureButton"]
-layout_mode = 0
-offset_left = 172.5
-offset_top = 145.0
-offset_right = 407.5
-offset_bottom = 287.0
-theme_override_fonts/font = SubResource("SystemFont_j1ve4")
-theme_override_font_sizes/font_size = 50
-text = "Start"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Start Button" type="Area2D" parent="."]
-position = Vector2(575, 193)
+position = Vector2(476, 246)
 scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Start Button"]
@@ -66,7 +95,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Quit Button" type="Area2D" parent="."]
-position = Vector2(575, 412)
+position = Vector2(245, 478)
 scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quit Button"]
@@ -93,7 +122,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Credits Button" type="Area2D" parent="."]
-position = Vector2(841, 413)
+position = Vector2(816, 333)
 scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Credits Button"]
@@ -119,19 +148,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = 429.0
-offset_top = 13.0
-offset_right = 720.0
-offset_bottom = 81.0
-theme_override_fonts/font = ExtResource("4_n1vqi")
-theme_override_font_sizes/font_size = 50
-text = "Gravity Well"
-
 [node name="Title Sprite" type="Sprite2D" parent="."]
 position = Vector2(575, 54)
 texture = ExtResource("7_dyneq")
+
+[node name="TransitionScreen" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionScreen"]
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScreen"]
+root_node = NodePath("../ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_4yxrl")
+}
 
 [connection signal="input_event" from="Start Button" to="." method="_on_start_button_input_event"]
 [connection signal="mouse_entered" from="Start Button" to="." method="_on_start_button_mouse_entered"]
@@ -142,3 +177,4 @@ texture = ExtResource("7_dyneq")
 [connection signal="input_event" from="Credits Button" to="." method="_on_credits_button_input_event"]
 [connection signal="mouse_entered" from="Credits Button" to="." method="_on_credits_button_mouse_entered"]
 [connection signal="mouse_exited" from="Credits Button" to="." method="_on_credits_button_mouse_exited"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

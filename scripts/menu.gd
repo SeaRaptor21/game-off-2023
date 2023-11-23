@@ -6,8 +6,9 @@ const ANIMATE_START = 1
 const ANIMATE_QUIT = 2
 const ANIMATE_CREDITS = 3
 const main_radius = 166
-const low_radius = 120
+const low_radius = 166
 const high_radius = 200
+const animation_speed = 0.5
 
 var rng = RandomNumberGenerator.new()
 var animate = ANIMATE_NONE
@@ -20,11 +21,12 @@ func _ready():
 	$"Start Button/CollisionShape2D".shape.radius = main_radius
 	$"Quit Button/CollisionShape2D".shape.radius = main_radius
 	generate_stars()
+	$TransitionScreen/ColorRect.color = Color(0,0,0,0)
 	
 func _draw():
 	draw_texture(bg_texture, Vector2())
 	
-func _process(delta):
+func _process(_delta):
 	if animate != ANIMATE_NONE:
 		current_radius += radius_inc
 		if animate == ANIMATE_START:
@@ -77,7 +79,7 @@ func resize_credits_button():
 
 func _on_start_button_mouse_entered():
 	animate = ANIMATE_START
-	radius_inc = 5
+	radius_inc = animation_speed
 
 func _on_start_button_mouse_exited():
 	if animate == ANIMATE_START:
@@ -88,7 +90,7 @@ func _on_start_button_mouse_exited():
 
 func _on_quit_button_mouse_entered():
 	animate = ANIMATE_QUIT
-	radius_inc = 5
+	radius_inc = animation_speed
 
 
 func _on_quit_button_mouse_exited():
@@ -98,13 +100,13 @@ func _on_quit_button_mouse_exited():
 	resize_quit_button()
 
 
-func _on_start_button_input_event(viewport, event, shape_idx):
+func _on_start_button_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton) && event.pressed:
 		# print("start clicked")
-		get_tree().change_scene_to_file("res://main.tscn")
+		$TransitionScreen/AnimationPlayer.play("fade_to_black")
 
 
-func _on_quit_button_input_event(viewport, event, shape_idx):
+func _on_quit_button_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton) && event.pressed:
 		# print("quit clicked")
 		get_tree().quit()
@@ -113,7 +115,7 @@ func _on_quit_button_input_event(viewport, event, shape_idx):
 
 func _on_credits_button_mouse_entered():
 	animate = ANIMATE_CREDITS
-	radius_inc = 5
+	radius_inc = animation_speed
 
 
 func _on_credits_button_mouse_exited():
@@ -123,6 +125,10 @@ func _on_credits_button_mouse_exited():
 	resize_credits_button()
 
 
-func _on_credits_button_input_event(viewport, event, shape_idx):
+func _on_credits_button_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton) && event.pressed:
 		get_tree().change_scene_to_file("res://credits.tscn")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	get_tree().change_scene_to_file("res://main.tscn")

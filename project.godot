@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Off 2023 -- Gravity Game"
-run/main_scene="res://main.tscn"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
