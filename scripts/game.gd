@@ -5,6 +5,10 @@ const scale = 100000
 
 var launched = false
 
+# Options settings
+var music_on = true
+var sfx_on = true
+
 func parse_json(path):
 	var file = FileAccess.open(path, FileAccess.READ)
 	var text = file.get_as_text()
