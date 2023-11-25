@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c44dwx4ckdgih"]
+[gd_scene load_steps=5 format=3 uid="uid://c44dwx4ckdgih"]
 
 [ext_resource type="Script" path="res://scripts/credits.gd" id="1_kgf7g"]
 [ext_resource type="FontFile" uid="uid://djhj8whancoyr" path="res://assets/futura.ttf" id="1_vbspw"]
+[ext_resource type="Texture2D" uid="uid://dslhl4sxxfpta" path="res://assets/bg.jpg" id="2_r65no"]
+[ext_resource type="Texture2D" uid="uid://m4cwtvs2oo8b" path="res://assets/ui/pack 2/PNG/Shop/Prise_BTN_Table.png" id="4_vlxki"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_kgf7g")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_r65no")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 382.0
@@ -36,10 +46,30 @@ Assets:
         Free Space Shooter Game GUI By craftpix.net"
 
 [node name="Button" type="Button" parent="."]
+visible = false
 offset_left = 528.0
 offset_top = 536.0
 offset_right = 622.0
 offset_bottom = 564.0
 text = "Back To Menu"
 
+[node name="Nicer Button" type="TextureButton" parent="."]
+offset_left = 484.0
+offset_top = 540.0
+offset_right = 745.0
+offset_bottom = 641.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("4_vlxki")
+
+[node name="Label" type="Label" parent="Nicer Button"]
+layout_mode = 0
+offset_left = 37.143
+offset_top = 24.2858
+offset_right = 230.143
+offset_bottom = 67.2858
+theme_override_fonts/font = ExtResource("1_vbspw")
+theme_override_font_sizes/font_size = 30
+text = "Back To Menu"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Nicer Button" to="." method="_on_button_pressed"]

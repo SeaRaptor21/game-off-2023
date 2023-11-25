@@ -35,9 +35,6 @@ extends Node2D
 # if for some reason, these mechanisms aren't correctly working in the situation
 # you need, you can call set_button_textures() manually on this object
 
-var music_setting = true
-var sfx_setting   = true
-
 var texture_on  = load("res://assets/ui/pack 2/PNG/Buttons/BTNs/Ok_BTN.png")
 var texture_off = load("res://assets/ui/pack 2/PNG/Ship_Parts/Table_03.png")
 
@@ -57,22 +54,22 @@ func _process(delta):
 	pass
 
 func set_button_textures():
-	if music_setting:
+	if Game.music_on:
 		$"Sprite2D/Music Button".texture_normal = texture_on
 	else:
 		$"Sprite2D/Music Button".texture_normal = texture_off
 				
-	if sfx_setting:
+	if Game.sfx_on:
 		$"Sprite2D/SFX Button".texture_normal = texture_on
 	else:
 		$"Sprite2D/SFX Button".texture_normal = texture_off
 
 func _on_music_button_pressed():
-	music_setting = not music_setting
+	Game.music_on = not Game.music_on
 	set_button_textures()
 
 func _on_sfx_button_pressed():
-	sfx_setting = not sfx_setting
+	Game.sfx_on = not Game.sfx_on
 	set_button_textures()
 
 # when Exit button pressed
