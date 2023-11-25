@@ -20,7 +20,7 @@ vertical_alignment = 1
 offset_left = 73.0
 offset_top = 115.0
 offset_right = 827.0
-offset_bottom = 464.0
+offset_bottom = 487.0
 theme_override_fonts/font = ExtResource("1_vbspw")
 theme_override_font_sizes/font_size = 21
 text = "Developers:
@@ -28,11 +28,12 @@ text = "Developers:
         Jay Rinkel -- Coder / Graphics
 
 Music:
-        Daniel
+        Daniel Podnozv
 
 Assets:
         Space Asset Pack by RafaelMatos
-        Ethnocentric Font By Typodermic (statically rendered text)"
+        Ethnocentric Font By Typodermic (statically rendered text)
+        Free Space Shooter Game GUI By craftpix.net"
 
 [node name="Button" type="Button" parent="."]
 offset_left = 528.0

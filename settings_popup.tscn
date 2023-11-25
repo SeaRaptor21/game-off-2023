@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7isgv4qg7no4"]
+
+[ext_resource type="Texture2D" uid="uid://oda226jp35gh" path="res://assets/ui/pack 2/PNG/Clouds/Cloud_02.png" id="1_1fvc1"]
+[ext_resource type="Script" path="res://scripts/settings_popup.gd" id="1_1fxbp"]
+[ext_resource type="Texture2D" uid="uid://ew4l207marl" path="res://assets/ui/pack 2/PNG/Ship_Parts/Table_03.png" id="3_tc0p0"]
+[ext_resource type="FontFile" uid="uid://djhj8whancoyr" path="res://assets/futura.ttf" id="4_3hsvy"]
+[ext_resource type="Texture2D" uid="uid://ctrc511730bse" path="res://assets/ui/pack 2/PNG/Main_Menu/Exit_BTN.png" id="5_g380k"]
+
+[node name="Settings Popup" type="Node2D"]
+script = ExtResource("1_1fxbp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(856, 243)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_1fvc1")
+
+[node name="Music Button" type="TextureButton" parent="Sprite2D"]
+offset_left = -312.0
+offset_top = -177.0
+offset_right = -101.0
+offset_bottom = 34.0
+scale = Vector2(0.389, 0.389)
+texture_normal = ExtResource("3_tc0p0")
+
+[node name="Music Label" type="Label" parent="Sprite2D"]
+offset_left = -200.879
+offset_top = -170.284
+offset_right = -100.879
+offset_bottom = -122.284
+scale = Vector2(1.389, 1.389)
+theme_override_fonts/font = ExtResource("4_3hsvy")
+theme_override_font_sizes/font_size = 34
+text = "Music"
+
+[node name="SFX Button" type="TextureButton" parent="Sprite2D"]
+offset_left = -312.0
+offset_top = -64.5557
+offset_right = -101.0
+offset_bottom = 146.444
+scale = Vector2(0.389, 0.389)
+texture_normal = ExtResource("3_tc0p0")
+
+[node name="SFX Label" type="Label" parent="Sprite2D"]
+offset_left = -197.444
+offset_top = -59.6825
+offset_right = 10.5555
+offset_bottom = -11.6825
+scale = Vector2(1.389, 1.389)
+theme_override_fonts/font = ExtResource("4_3hsvy")
+theme_override_font_sizes/font_size = 34
+text = "Sound Effects"
+
+[node name="Exit Button" type="TextureButton" parent="Sprite2D"]
+offset_left = 40.0001
+offset_top = 53.3333
+offset_right = 450.0
+offset_bottom = 174.333
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("5_g380k")
+
+[connection signal="pressed" from="Sprite2D/Music Button" to="." method="_on_music_button_pressed"]
+[connection signal="pressed" from="Sprite2D/SFX Button" to="." method="_on_sfx_button_pressed"]
+[connection signal="pressed" from="Sprite2D/Exit Button" to="." method="_on_exit_button_pressed"]
