@@ -45,8 +45,8 @@ func scale_add(num):
 	scale_to(radius+num)
 
 func _on_area_2d_body_entered(body):
-	if body.name == 'Ship':
-		print('You die!!!!')
+	if body.name == 'Ship' and Game.launched:
+		Game.die()
 
 
 func _on_area_2d_mouse_entered():

@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8ypxt86rto06"]
+[gd_scene load_steps=24 format=3 uid="uid://c8ypxt86rto06"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_kvxnh"]
 [ext_resource type="Texture2D" uid="uid://bryxby4iiffby" path="res://assets/bg.jpg" id="1_th7bm"]
 [ext_resource type="PackedScene" uid="uid://ccnmqkb7nk2uj" path="res://spaceship.tscn" id="2_fs8j4"]
-[ext_resource type="PackedScene" uid="uid://7nk7idy7hre1" path="res://planet_resizeable.tscn" id="3_1p6ey"]
 [ext_resource type="Texture2D" uid="uid://w1bcwrwgdwkb" path="res://assets/ui/pack 2/PNG/Clouds/Cloud_02.png" id="5_eechq"]
 [ext_resource type="Texture2D" uid="uid://dlbugwuvonpvh" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Hangar_BTN.png" id="5_hty2m"]
 [ext_resource type="Texture2D" uid="uid://bsjmrgyhx8gfj" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Hangar_BTN.png" id="6_2v8kv"]
@@ -12,25 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://dovvmhml4td70" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Menu_BTN.png" id="8_dw4li"]
 [ext_resource type="Texture2D" uid="uid://do71qrnctdgnq" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Settings_BTN.png" id="10_pwcb5"]
 [ext_resource type="Texture2D" uid="uid://dmau6k5r7ys60" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Settings_BTN.png" id="11_1yv5q"]
+[ext_resource type="Texture2D" uid="uid://sjyom2v136ge" path="res://assets/ui/pack 2/PNG/Accept/Window.png" id="12_2oeoa"]
+[ext_resource type="Texture2D" uid="uid://clkj8pyxagdhe" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Replay_BTN.png" id="13_7imlv"]
+[ext_resource type="Texture2D" uid="uid://c1mjexelq3nsh" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Replay_BTN.png" id="14_tfrjp"]
+[ext_resource type="Texture2D" uid="uid://ctej0w2fnwheb" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Forward_BTN.png" id="15_ofund"]
+[ext_resource type="Texture2D" uid="uid://xu77lhrgaptl" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Forward_BTN.png" id="16_4yth5"]
+[ext_resource type="Texture2D" uid="uid://do1yig2381ijk" path="res://assets/ui/pack 2/PNG/You_Win/Header.png" id="17_m7s0s"]
+[ext_resource type="Texture2D" uid="uid://bix0gpjepxy7k" path="res://assets/ui/pack 2/PNG/You_Lose/Header.png" id="18_vt7mb"]
 
 [sub_resource type="SystemFont" id="SystemFont_1bx28"]
 font_names = PackedStringArray("Futura")
-
-[sub_resource type="Animation" id="Animation_er5v2"]
-resource_name = "fade_to_normal"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_ob4cj"]
 length = 0.001
@@ -63,6 +53,22 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_er5v2"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4yxrl"]
 _data = {
 "RESET": SubResource("Animation_ob4cj"),
@@ -85,12 +91,6 @@ region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 1152, 648)
 
 [node name="Planets" type="Node2D" parent="."]
-
-[node name="Planet" parent="Planets" instance=ExtResource("3_1p6ey")]
-position = Vector2(814, 475)
-
-[node name="Planet2" parent="Planets" instance=ExtResource("3_1p6ey")]
-position = Vector2(757, 143)
 
 [node name="Ship" parent="." instance=ExtResource("2_fs8j4")]
 position = Vector2(296, 421)
@@ -169,7 +169,6 @@ theme_override_font_sizes/font_size = 35
 text = "Level Name"
 
 [node name="TransitionScreen" type="Node2D" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="TransitionScreen"]
 offset_right = 1152.0
@@ -185,5 +184,97 @@ libraries = {
 "": SubResource("AnimationLibrary_4yxrl")
 }
 
+[node name="WinPopup" type="Node2D" parent="."]
+visible = false
+
+[node name="Window" type="Sprite2D" parent="WinPopup"]
+position = Vector2(601, 324)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_2oeoa")
+
+[node name="Replay" type="TextureButton" parent="WinPopup"]
+offset_left = 382.0
+offset_top = 421.0
+offset_right = 592.0
+offset_bottom = 631.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_7imlv")
+texture_hover = ExtResource("14_tfrjp")
+
+[node name="Next" type="TextureButton" parent="WinPopup"]
+offset_left = 549.0
+offset_top = 421.0
+offset_right = 759.0
+offset_bottom = 631.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("15_ofund")
+texture_hover = ExtResource("16_4yth5")
+
+[node name="LevelSelect" type="TextureButton" parent="WinPopup"]
+offset_left = 709.0
+offset_top = 421.0
+offset_right = 919.0
+offset_bottom = 631.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_rgraj")
+texture_hover = ExtResource("8_dw4li")
+
+[node name="Header" type="Sprite2D" parent="WinPopup"]
+position = Vector2(588, 89)
+scale = Vector2(0.855932, 0.855932)
+texture = ExtResource("17_m7s0s")
+
+[node name="LevelName" type="Label" parent="WinPopup"]
+offset_left = 313.0
+offset_top = 179.0
+offset_right = 714.0
+offset_bottom = 280.0
+theme_override_fonts/font = SubResource("SystemFont_1bx28")
+theme_override_font_sizes/font_size = 75
+text = "Level Name"
+
+[node name="LosePopup" type="Node2D" parent="."]
+visible = false
+
+[node name="Window" type="Sprite2D" parent="LosePopup"]
+position = Vector2(601, 324)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_2oeoa")
+
+[node name="Replay" type="TextureButton" parent="LosePopup"]
+offset_left = 478.0
+offset_top = 421.0
+offset_right = 688.0
+offset_bottom = 631.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("13_7imlv")
+texture_hover = ExtResource("14_tfrjp")
+
+[node name="LevelSelect" type="TextureButton" parent="LosePopup"]
+offset_left = 613.0
+offset_top = 421.0
+offset_right = 823.0
+offset_bottom = 631.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_rgraj")
+texture_hover = ExtResource("8_dw4li")
+
+[node name="Header" type="Sprite2D" parent="LosePopup"]
+position = Vector2(588, 89)
+scale = Vector2(0.855932, 0.855932)
+texture = ExtResource("18_vt7mb")
+
+[node name="LevelName" type="Label" parent="LosePopup"]
+offset_left = 313.0
+offset_top = 179.0
+offset_right = 714.0
+offset_bottom = 280.0
+theme_override_fonts/font = SubResource("SystemFont_1bx28")
+theme_override_font_sizes/font_size = 75
+text = "Level Name"
+
 [connection signal="pressed" from="Control/Launch" to="." method="_on_launch_pressed"]
+[connection signal="pressed" from="Control/Settings" to="." method="_on_settings_pressed"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="WinPopup/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="LosePopup/Replay" to="." method="_on_replay_pressed"]

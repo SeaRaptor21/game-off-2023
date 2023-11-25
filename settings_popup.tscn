@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7isgv4qg7no4"]
 
-[ext_resource type="Texture2D" uid="uid://oda226jp35gh" path="res://assets/ui/pack 2/PNG/Clouds/Cloud_02.png" id="1_1fvc1"]
+[ext_resource type="Texture2D" uid="uid://w1bcwrwgdwkb" path="res://assets/ui/pack 2/PNG/Clouds/Cloud_02.png" id="1_1fvc1"]
 [ext_resource type="Script" path="res://scripts/settings_popup.gd" id="1_1fxbp"]
-[ext_resource type="Texture2D" uid="uid://ew4l207marl" path="res://assets/ui/pack 2/PNG/Ship_Parts/Table_03.png" id="3_tc0p0"]
-[ext_resource type="FontFile" uid="uid://djhj8whancoyr" path="res://assets/futura.ttf" id="4_3hsvy"]
-[ext_resource type="Texture2D" uid="uid://ctrc511730bse" path="res://assets/ui/pack 2/PNG/Main_Menu/Exit_BTN.png" id="5_g380k"]
+[ext_resource type="Texture2D" uid="uid://061c4r75vced" path="res://assets/ui/pack 2/PNG/Ship_Parts/Table_03.png" id="3_tc0p0"]
+[ext_resource type="FontFile" uid="uid://b1asyyae1ldmm" path="res://assets/futura.ttf" id="4_3hsvy"]
+[ext_resource type="Texture2D" uid="uid://dum4cswhyqsft" path="res://assets/ui/pack 2/PNG/Main_Menu/Exit_BTN.png" id="5_g380k"]
 
-[node name="Settings Popup" type="Node2D"]
+[node name="SettingsPopup" type="Node2D"]
 script = ExtResource("1_1fxbp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(856, 243)
+position = Vector2(960, 243)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("1_1fvc1")
 

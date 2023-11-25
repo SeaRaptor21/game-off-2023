@@ -1,6 +1,8 @@
 {
 	"name": "Test Level",
 	"planets": [
-		{"x":0, "y":0, "density":5515.0, "radius":6.371e6, "maxradius":20146870.9729, "minradius":6.371e6}
-	]
+		{"x":600, "y":500, "density":5515.0, "radius":6.371e6, "maxradius":20146870.9729, "minradius":6.371e6}
+	],
+	"goal": {"x":700, "y":300, "radius":6.371e6, "density":5515.0},
+	"start": {"x":100, "y":100}
 }
