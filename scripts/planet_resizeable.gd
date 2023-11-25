@@ -8,8 +8,8 @@ var mouse_in_area2d = false
 var mouse_in_area2d2 = false
 var dragging = false
 
-const max_radius = 6.371*10**6.5
-const min_radius = 6.371e6
+var max_radius = 6.371*10**6.5
+var min_radius = 6.371e6
 
 const possible_images = [1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,37,38,40,41]
 
