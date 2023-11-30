@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c8ypxt86rto06"]
+[gd_scene load_steps=25 format=3 uid="uid://c8ypxt86rto06"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_kvxnh"]
 [ext_resource type="Texture2D" uid="uid://bryxby4iiffby" path="res://assets/bg.jpg" id="1_th7bm"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://do71qrnctdgnq" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Settings_BTN.png" id="10_pwcb5"]
 [ext_resource type="Texture2D" uid="uid://dmau6k5r7ys60" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Settings_BTN.png" id="11_1yv5q"]
 [ext_resource type="Texture2D" uid="uid://sjyom2v136ge" path="res://assets/ui/pack 2/PNG/Accept/Window.png" id="12_2oeoa"]
+[ext_resource type="PackedScene" uid="uid://c7isgv4qg7no4" path="res://settings_popup.tscn" id="12_07q2v"]
 [ext_resource type="Texture2D" uid="uid://clkj8pyxagdhe" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Replay_BTN.png" id="13_7imlv"]
 [ext_resource type="Texture2D" uid="uid://c1mjexelq3nsh" path="res://assets/ui/pack 2/PNG/Buttons/BTNs_Active/Replay_BTN.png" id="14_tfrjp"]
 [ext_resource type="Texture2D" uid="uid://ctej0w2fnwheb" path="res://assets/ui/pack 2/PNG/Buttons/BTNs/Forward_BTN.png" id="15_ofund"]
@@ -167,6 +168,9 @@ offset_bottom = 76.0
 theme_override_fonts/font = SubResource("SystemFont_1bx28")
 theme_override_font_sizes/font_size = 35
 text = "Level Name"
+
+[node name="SettingsPopup" parent="Control" instance=ExtResource("12_07q2v")]
+visible = false
 
 [node name="TransitionScreen" type="Node2D" parent="."]
 

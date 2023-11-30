@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://dnqhkg3xnom4x"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_olu4w"]
-[ext_resource type="Texture2D" uid="uid://cxypdndckbx2f" path="res://assets/planets/5.png" id="3_1st0h"]
-[ext_resource type="Texture2D" uid="uid://c42lmkjch1ytw" path="res://assets/planets/1.png" id="4_774pd"]
-[ext_resource type="FontFile" uid="uid://djhj8whancoyr" path="res://assets/futura.ttf" id="4_n1vqi"]
-[ext_resource type="Texture2D" uid="uid://fwr7iiurcw15" path="res://assets/planets/25.png" id="5_21een"]
-[ext_resource type="Texture2D" uid="uid://cake72mln8hgb" path="res://assets/title_image.png" id="7_dyneq"]
+[ext_resource type="Texture2D" uid="uid://b7l5h0ohrohud" path="res://assets/planets/5.png" id="3_1st0h"]
+[ext_resource type="Texture2D" uid="uid://cfllo21tbq8lq" path="res://assets/planets/1.png" id="4_774pd"]
+[ext_resource type="FontFile" uid="uid://b1asyyae1ldmm" path="res://assets/futura.ttf" id="4_n1vqi"]
+[ext_resource type="Texture2D" uid="uid://b8d6qifjjb66l" path="res://assets/planets/25.png" id="5_21een"]
+[ext_resource type="Texture2D" uid="uid://dsjvvgjsfn3ox" path="res://assets/title_image.png" id="7_dyneq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0abhs"]
 radius = 60.0333

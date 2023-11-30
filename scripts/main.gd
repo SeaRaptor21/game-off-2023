@@ -16,12 +16,11 @@ func _on_launch_pressed():
 
 func _on_settings_pressed():
 	if settings_open:
-		$SettingsPopup.queue_free()
 		settings_open = false
+		$Control/SettingsPopup.visible = false
 	else:
-		var settings = settings_scene.instantiate()
-		$Control.add_sibling(settings)
 		settings_open = true
+		$Control/SettingsPopup.visible = true
 
 
 func _on_replay_pressed():

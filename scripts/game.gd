@@ -11,8 +11,11 @@ var launched = false
 var music_on = true
 var sfx_on = true
 
+var paths = ['res://levels/test_level.json']
 var data
-var level = 'res://levels/test_level.json'
+var level = paths[0]
+var level_number = 0
+var completed_levels = []
 
 func parse_json(path):
 	var file = FileAccess.open(path, FileAccess.READ)
@@ -22,6 +25,7 @@ func parse_json(path):
 	return dict
 
 func load_level(path):
+	#get_tree().change_scene_to_file("res://main.tscn")
 	var main = get_node("/root/Main")
 	main.get_node("WinPopup").visible = false
 	main.get_node("LosePopup").visible = false
@@ -56,6 +60,7 @@ func win():
 	var popup = main.get_node("WinPopup")
 	popup.visible = true
 	main.get_node("TransitionScreen/ColorRect").color.a = 0.5
+	completed_levels.append(level_number)
 	
 func die():
 	launched = false

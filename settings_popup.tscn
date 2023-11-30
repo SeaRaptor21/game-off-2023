@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7isgv4qg7no4"]
 
-[ext_resource type="Texture2D" uid="uid://oda226jp35gh" path="res://assets/ui/pack 2/PNG/Clouds/Cloud_02.png" id="1_1fvc1"]
+[ext_resource type="Texture2D" uid="uid://w1bcwrwgdwkb" path="res://assets/ui/pack 2/PNG/Clouds/Cloud_02.png" id="1_1fvc1"]
 [ext_resource type="Script" path="res://scripts/settings_popup.gd" id="1_1fxbp"]
-[ext_resource type="Texture2D" uid="uid://ew4l207marl" path="res://assets/ui/pack 2/PNG/Ship_Parts/Table_03.png" id="3_tc0p0"]
-[ext_resource type="FontFile" uid="uid://djhj8whancoyr" path="res://assets/futura.ttf" id="4_3hsvy"]
-[ext_resource type="Texture2D" uid="uid://ctrc511730bse" path="res://assets/ui/pack 2/PNG/Main_Menu/Exit_BTN.png" id="5_g380k"]
+[ext_resource type="Texture2D" uid="uid://061c4r75vced" path="res://assets/ui/pack 2/PNG/Ship_Parts/Table_03.png" id="3_tc0p0"]
+[ext_resource type="FontFile" uid="uid://b1asyyae1ldmm" path="res://assets/futura.ttf" id="4_3hsvy"]
+[ext_resource type="Texture2D" uid="uid://dum4cswhyqsft" path="res://assets/ui/pack 2/PNG/Main_Menu/Exit_BTN.png" id="5_g380k"]
 
 [node name="SettingsPopup" type="Node2D"]
 script = ExtResource("1_1fxbp")
@@ -51,7 +51,6 @@ theme_override_font_sizes/font_size = 34
 text = "Sound Effects"
 
 [node name="Exit Button" type="TextureButton" parent="Sprite2D"]
-visible = false
 offset_left = 40.0001
 offset_top = 53.3333
 offset_right = 450.0

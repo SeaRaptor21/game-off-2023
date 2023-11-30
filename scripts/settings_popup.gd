@@ -74,4 +74,5 @@ func _on_sfx_button_pressed():
 
 # when Exit button pressed
 func _on_exit_button_pressed():
-	self.queue_free()
+	get_node("../..").settings_open = false
+	visible = false
